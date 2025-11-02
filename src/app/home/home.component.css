@@ -1,0 +1,149 @@
+.home-wrapper {
+  font-family: 'Segoe UI', sans-serif;
+  padding: 20px;
+  background-color: #fffef5;
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
+  background-color: #fef3c7;
+  border-radius: 16px;
+  margin-bottom: 40px;
+}
+
+.hero-text h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+.hero-text span {
+  color: #d97706;
+}
+.hero-text p {
+  font-size: 18px;
+  color: #555;
+}
+.hero-text .explore-btn {
+  margin-top: 20px;
+  background-color: #f59e0b;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero-image img {
+  width: 200px;
+}
+
+.how-it-works {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.how-it-works .steps {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+.step {
+  max-width: 250px;
+}
+.step img {
+  width: 80px;
+}
+.step h4 {
+  margin-top: 10px;
+  color: #333;
+}
+
+.group-deals .deal-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.deal-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  width: 250px;
+}
+.deal-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.deal-card h4 {
+  margin: 10px 0 5px;
+}
+.deal-card p {
+  margin: 5px 0;
+}
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: #eee;
+  border-radius: 4px;
+  margin: 8px 0;
+}
+.progress-bar {
+  height: 8px;
+  background-color: #f59e0b;
+  border-radius: 4px;
+}
+
+.btn-join {
+  background-color: #f59e0b;
+  color: white;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.ask-buddy-cta {
+  background-color: #fff3cd;
+  text-align: center;
+  padding: 30px;
+  margin-top: 50px;
+  border-radius: 12px;
+}
+.ask-buddy-cta .btn-outline {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: 2px solid #f59e0b;
+  border-radius: 20px;
+  color: #f59e0b;
+  text-decoration: none;
+  font-weight: bold;
+}
+.ask-buddy-cta .btn-outline:hover {
+  background-color: #f59e0b;
+  color: white;
+}
+.how-it-works .step {
+  text-align: center;
+  padding: 20px;
+  max-width: 250px;
+  margin: auto;
+}
+
+.how-it-works .icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+.hero-image-emoji {
+  font-size: 5rem;          /* big size */
+  text-align: center;       /* center horizontally */
+  user-select: none;        /* no text selection */
+  margin-top: 20px;
+}
+
+.hero-image-emoji .emoji {
+  display: inline-block;
+  filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.2)); /* subtle shadow */
+}

@@ -1,0 +1,65 @@
+<div class="home-wrapper">
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-text">
+      <h1>Welcome to <span>BachatBuddy 🛍️</span></h1>
+      <p>Your AI-powered shopping buddy to save more with group deals in India!</p>
+      <a routerLink="/products" class="explore-btn">🛒 Start Shopping</a>
+    </div>
+    <div class="hero-image-emoji" aria-label="Shopping together" role="img">
+  <span class="emoji">🛍️🛒👫</span>
+</div>
+
+  </section>
+ <!-- How It Works Section (moved down) -->
+  <section class="how-it-works">
+    <h2>📦 How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="icon">🔎</div>
+        <h4>Browse Products</h4>
+        <p>Explore top electronics, groceries, fashion & more at the best prices.</p>
+      </div>
+      <div class="step">
+        <div class="icon">👥</div>
+        <h4>Join a Group</h4>
+        <p>Join others to unlock lower prices through group buying.</p>
+      </div>
+      <div class="step">
+        <div class="icon">💰</div>
+        <h4>Save Big!</h4>
+        <p>The more people join, the lower the price. You save more, together!</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Popular Group Deals (moved up) -->
+  <section class="group-deals">
+    <h2>🔥 Popular Group Deals</h2>
+    <div class="deal-cards">
+
+      <!-- Example using Angular *ngFor like product.html -->
+      <div class="deal-card" *ngFor="let item of popularProducts">
+      <img [src]="item.pimage" [alt]="item.pname" style="width: 150px; height: auto; object-fit: contain; border-radius: 8px;" />
+        <h4>{{ item.pname }}</h4>
+        <p><del>₹{{ item.price }}</del> <strong>₹{{ item.price * 0.5 | number:'1.0-0' }} (Group Price)</strong></p>
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: 70%"></div>
+        </div>
+        <p>7 joined / 10 needed</p>
+        <button class="btn-join">Join Group</button>
+      </div>
+
+    </div>
+  </section>
+
+   <!-- Ask Buddy CTA -->
+  <section class="ask-buddy-cta">
+    <h3>💬 Need help choosing?</h3>
+    <p><strong>Ask Buddy</strong> to find the best deals for your needs!</p>
+    <a routerLink="/assistant" class="btn-outline">Ask Buddy Now</a>
+  </section>
+
+</div>

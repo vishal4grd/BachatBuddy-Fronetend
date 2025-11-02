@@ -1,0 +1,103 @@
+<div class="container py-5" *ngIf="product">
+  <div class="row">
+    <!-- Product Image -->
+    <div class="col-md-5 text-center">
+      <img
+        [src]="product.pimage"
+        class="img-fluid rounded shadow-sm"
+        alt="{{ product.pname }}"
+        style="max-height: 400px; object-fit: contain;"
+      />
+    </div>
+
+    <!-- Product Info -->
+    <div class="col-md-7">
+      <h3 class="fw-bold">{{ product.pname }}</h3>
+      <p class="text-muted">{{ product.category }}</p>
+
+      <div class="d-flex align-items-center mb-3">
+        <h4 class="text-success mb-0">
+          {{ product.price | discount:30 | currency:'INR' }}
+        </h4>
+        <span class="text-muted ms-2 text-decoration-line-through">
+          {{ product.price | currency:'INR' }}
+        </span>
+        <span class="badge bg-success ms-3">30% OFF</span>
+      </div>
+
+      <p class="text-secondary">{{ product.description }}</p>
+
+      <p>
+        <strong>Stock:</strong>
+        <span
+          [class.text-success]="product.qty > 0"
+          [class.text-danger]="product.qty === 0"
+        >
+          {{ product.qty > 0 ? 'Available' : 'Out of Stock' }}
+        </span>
+      </p>
+
+      <!-- Group Deal Section -->
+      <div class="alert alert-success py-2">
+        🎉 <strong>Group Deal Active!</strong> 7 joined / 10 needed
+        <div class="progress mt-1" style="height: 6px;">
+          <div class="progress-bar bg-success" style="width: 70%;"></div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="d-flex gap-3 mt-3">
+        <button class="btn btn-outline-primary w-50" (click)="addToCart(product)">
+          🛒 Add to Cart
+        </button>
+        <button class="btn btn-primary w-50" (click)="buyNow(product)">
+          ⚡ Buy Now
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reviews Section -->
+  <hr class="my-5" />
+  <div>
+    <h4 class="mb-3">⭐ Customer Reviews</h4>
+    <div *ngFor="let r of reviews" class="mb-3 border-bottom pb-2">
+      <div class="d-flex align-items-center mb-1">
+        <span class="fw-bold me-2">{{ r.user }}</span>
+        <span class="badge bg-warning text-dark">{{ r.rating }} ★</span>
+      </div>
+      <p class="mb-1">{{ r.comment }}</p>
+      <small class="text-muted">— {{ r.date }}</small>
+    </div>
+  </div>
+
+  <!-- Related Products -->
+  <hr class="my-5" />
+  <div>
+    <h4 class="mb-4">🛍️ You may also like</h4>
+    <div class="row g-3">
+      <div class="col-md-3" *ngFor="let item of relatedProducts">
+        <div class="card shadow-sm border-0 h-100">
+          <img
+            [src]="item.pimage"
+            class="card-img-top p-2"
+            alt="{{ item.pname }}"
+            style="height: 150px; object-fit: contain;"
+          />
+          <div class="card-body text-center">
+            <p class="fw-bold mb-1">{{ item.pname }}</p>
+            <p class="text-success mb-2">
+              {{ item.price | discount:30 | currency:'INR' }}
+            </p>
+            <button
+              class="btn btn-sm btn-outline-primary"
+              (click)="viewProduct(item.pid)"
+            >
+              View
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

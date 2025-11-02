@@ -1,0 +1,82 @@
+.coupons-container {
+  background-color: #fffaf0;
+  padding: 25px 30px;
+  border-radius: 16px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  margin: 25px auto;
+  max-width: 900px;
+}
+
+.coupons-container h2 {
+  color: #3c2f2f;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.loading,
+.info,
+.empty-message {
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+  margin: 10px 0;
+}
+
+.coupon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.coupon-card {
+  background-color: #f4e2d8;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.coupon-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.coupon-code {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2e1f1f;
+  margin-bottom: 6px;
+}
+
+.coupon-desc {
+  font-size: 15px;
+  color: #4a3f3f;
+  margin-bottom: 10px;
+}
+
+.coupon-expiry {
+  font-size: 13px;
+  color: #a88979;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.apply-btn {
+  margin-top: 12px;
+  background-color: #d6bfa9;
+  color: #3c2f2f;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.apply-btn:hover {
+  background-color: #c9ae98;
+  transform: scale(1.05);
+}

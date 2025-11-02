@@ -1,0 +1,54 @@
+<div class="container py-4">
+  <div class="search-bar mb-3 text-center">
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    (keydown.enter)="onSearch()"
+    placeholder="Type your search and hit Enter"
+    class="form-control"
+    style="max-width: 400px; margin: 0 auto;"
+  />
+</div>
+
+<h2 class="text-center mb-4">🔍 Search Results</h2>
+
+
+  <!-- No products found -->
+  <div *ngIf="prod?.length === 0" class="text-center text-muted mt-5">
+    <h4>😕 No products found!</h4>
+    <p class="lead">We’re working on it. New deals coming soon 🔄</p>
+    <div style="font-size: 6rem; text-align: center;">
+  ⏳
+</div>
+
+  </div>
+
+  <!-- Show products -->
+  <div class="row g-4" *ngIf="prod && prod.length > 0">
+    <div class="col-md-4" *ngFor="let i of prod">
+      <div class="card h-100 shadow border-0">
+        <img [src]="i.pimage" class="card-img-top p-3" [alt]="i.pname" style="height: 220px; object-fit: contain;" />
+        <div class="card-body">
+          <h5 class="card-title">{{ i.pname | uppercase }}</h5>
+          <p class="card-text">
+            🏷️ Price: <del>{{ i.price | currency:'INR' }}</del><br />
+            💸 Group Price: <strong class="text-success">{{ i.price | discount:30 | currency:'INR' }}</strong><br />
+            📦 In Stock: {{ i.qty }}
+          </p>
+
+          <!-- Group Deal Banner -->
+          <div class="alert alert-info py-1 px-2 mb-3" style="font-size: 0.9rem;">
+            🧑‍🤝‍🧑 Group Deal: Save more together!
+            <div class="progress mt-1" style="height: 6px;">
+              <div class="progress-bar bg-info" role="progressbar" style="width: 50%;"></div>
+            </div>
+          </div>
+
+          <a routerLink="/buy" [queryParams]="{a: i.pid, b: i.pname, c: i.pimage, d: i.price, e: i.qty}" class="btn btn-primary w-100">
+            🛍️ Buy / Join Deal
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

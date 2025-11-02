@@ -1,0 +1,43 @@
+<div class="container py-4">
+  <h2 class="text-center mb-4">🛒 My Cart</h2>
+
+  <div *ngIf="cartItems.length === 0" class="text-center text-muted">
+    Your cart is empty 😔
+  </div>
+
+  <div class="row g-4" *ngIf="cartItems.length > 0">
+    <div class="col-md-4 col-sm-6" *ngFor="let item of cartItems">
+      <div class="card h-100 shadow border-0 hover-shadow">
+        <div class="position-relative">
+          <img
+            [src]="item.image"
+            class="card-img-top p-3 rounded"
+            alt="{{ item.name }}"
+            style="height: 220px; object-fit: contain;"
+          />
+        </div>
+
+        <div class="card-body">
+          <h5 class="card-title fw-bold">{{ item.name }}</h5>
+          <p class="mb-2">
+            <span class="text-decoration-line-through">₹{{ item.price }}</span>
+            <span class="fw-bold text-success ms-2">₹{{ item.price }}</span>
+          </p>
+
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <div class="quantity-control">
+              <button (click)="decreaseQuantity(item)">➖</button>
+              <span>{{ item.quantity }}</span>
+              <button (click)="increaseQuantity(item)">➕</button>
+            </div>
+            <button class="btn btn-secondary btn-sm" (click)="removeItem(item)">🗑️</button>
+          </div>
+
+          <button class="btn btn-primary w-100" (click)="buyNow(item)">
+            🛍️ Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,129 @@
+.orders-page {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9fafb;
+  padding: 20px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+.loading,
+.error,
+.empty {
+  text-align: center;
+  color: #555;
+  margin-top: 30px;
+}
+
+.order-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  padding: 16px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.order-summary {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.product-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.order-info {
+  flex: 1;
+}
+
+.order-info h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.price {
+  font-size: 15px;
+  margin: 6px 0;
+  color: #111;
+}
+.price .saved {
+  display: block;
+  color: #16a34a;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.status-line {
+  font-size: 14px;
+  margin: 8px 0;
+  padding: 4px 0;
+}
+.status-line.delivered { color: #16a34a; }
+.status-line.cancelled { color: #dc2626; }
+.status-line.refund { color: #2563eb; }
+
+.refund-box {
+  background-color: #f0f9ff;
+  border-left: 4px solid #2563eb;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 10px 0;
+  font-size: 13px;
+}
+.refund-note {
+  color: #555;
+  font-size: 12px;
+}
+
+.group-savings {
+  background: #ecfdf5;
+  border: 1px solid #6ee7b7;
+  border-radius: 6px;
+  padding: 8px;
+  color: #065f46;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn {
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-review {
+  background-color: #2563eb;
+  color: white;
+}
+.btn-review:hover {
+  background-color: #1e40af;
+}
+
+.btn-track {
+  background-color: #f59e0b;
+  color: white;
+}
+.btn-cancel {
+  background-color: #dc2626;
+  color: white;
+}

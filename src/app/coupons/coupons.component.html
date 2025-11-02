@@ -1,0 +1,21 @@
+<div class="coupons-container">
+  <h2>🎟️ My Coupons</h2>
+
+  <div *ngIf="loading" class="loading">Loading your coupons...</div>
+  <div *ngIf="message" class="info">{{ message }}</div>
+
+  <!-- Coupon grid -->
+  <div class="coupon-grid" *ngIf="!loading && coupons.length > 0">
+    <div *ngFor="let c of coupons" class="coupon-card">
+      <div class="coupon-code">{{ c.code }}</div>
+      <div class="coupon-desc">{{ c.title }}</div>
+      <div>💸 Discount: <strong>{{ c.discount }}%</strong></div>
+      <div class="coupon-expiry">Expires: {{ c.expires | date }}</div>
+      <button class="apply-btn" (click)="apply(c)">Apply Coupon</button>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && coupons.length === 0" class="empty-message">
+    No coupons available at the moment.
+  </div>
+</div>

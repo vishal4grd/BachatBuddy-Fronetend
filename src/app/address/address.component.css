@@ -1,0 +1,203 @@
+/* ========== PAGE CONTAINER ========== */
+.page {
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: #fffaf0;
+  padding: 25px 30px;
+  border-radius: 16px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* ========== HEADINGS ========== */
+.form-title {
+  text-align: center;
+  color: #3c2f2f;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.form-title span {
+  border-bottom: 2px solid #d6bfa9;
+  padding-bottom: 3px;
+}
+
+.form-subtitle {
+  text-align: center;
+  color: #7b6b61;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+/* ========== STATUS / MESSAGE ========== */
+.error {
+  color: #b30000;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.empty-message {
+  text-align: center;
+  color: #a88979;
+  font-style: italic;
+  margin: 20px 0;
+}
+
+/* ========== ADDRESS LIST ========== */
+.address-card {
+  background-color: #f4e2d8;
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.address-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.address-card div {
+  margin: 4px 0;
+  color: #3c2f2f;
+  font-size: 15px;
+}
+
+.address-card strong {
+  font-weight: 600;
+}
+
+.address-card span {
+  color: #006400;
+  font-weight: 500;
+  margin-left: 5px;
+}
+
+/* ========== BUTTONS ========== */
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.button-group button {
+  background-color: #d6bfa9;
+  color: #3c2f2f;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button-group button:hover {
+  background-color: #c9ae98;
+  transform: translateY(-1px);
+}
+
+/* ========== FORM ========== */
+.address-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* Keep your existing form-control styles */
+input.form-control {
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+input.form-control:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.4);
+  outline: none;
+}
+
+/* ========== CHECKBOX ========== */
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.2);
+  accent-color: #4a90e2;
+}
+
+/* ========== FORM BUTTONS ========== */
+.address-form .button-group {
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.address-form .button-group button:first-child {
+  background-color: #4a90e2;
+  color: #fff;
+}
+
+.address-form .button-group button:first-child:hover {
+  background-color: #357abd;
+}
+
+.address-form .button-group button:last-child {
+  background-color: #ccc;
+}
+
+.address-form .button-group button:last-child:hover {
+  background-color: #b5b5b5;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 600px) {
+  .page {
+    padding: 15px 20px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-title {
+    font-size: 20px;
+  }
+
+  .address-card {
+    font-size: 14px;
+  }
+}
+@media (max-width: 600px) {
+  .orders-container,
+  .address-container,
+  .coupons-container {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .order-card,
+  .address-card,
+  .coupon-card {
+    font-size: 14px;
+  }
+}

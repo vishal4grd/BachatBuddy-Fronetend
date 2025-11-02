@@ -1,0 +1,39 @@
+<form #form="ngForm" class="login-form" (ngSubmit)="login()">
+  <h2 class="form-title">🔐 Login to <span>BachatBuddy</span></h2>
+  <p class="form-subtitle">🛍️ Your smart shopping starts here</p>
+
+  <!-- Username -->
+  <label for="uid">👤 Username</label>
+  <input
+    type="text"
+    class="form-control"
+    id="uid"
+    name="username"
+    [(ngModel)]="credentials.username"
+    #u="ngModel"
+    minlength="5"
+    required
+    placeholder="Enter username"
+  />
+  <div *ngIf="u.errors?.['required'] && u.touched" class="text-danger">❗ Username is required</div>
+
+  <!-- Password -->
+  <label for="pwd">🔑 Password</label>
+  <input
+    type="password"
+    class="form-control"
+    id="pwd"
+    name="password"
+    [(ngModel)]="credentials.password"
+    #p="ngModel"
+    required
+    placeholder="Enter password"
+  />
+  <div *ngIf="status" class="text-danger text-center mt-2">{{ status }}</div>
+
+  <!-- Buttons -->
+  <div class="button-group">
+    <button type="submit" class="btn btn-success" [disabled]="form.invalid">🚀 Login</button>
+    <a routerLink="/register" class="btn btn-outline-primary">🆕 New user? Register</a>
+  </div>
+</form>

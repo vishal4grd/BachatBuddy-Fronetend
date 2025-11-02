@@ -1,0 +1,53 @@
+<div class="orders-page">
+  <h2 class="page-title">📦 My Orders</h2>
+
+  <div *ngIf="loading" class="loading">⏳ Loading...</div>
+  <div *ngIf="error" class="error">⚠️ {{ error }}</div>
+
+  <div *ngIf="!loading && orders.length === 0" class="empty">
+    🏚️ You haven’t placed any orders yet.
+  </div>
+
+  <div class="order-card" *ngFor="let order of orders">
+    <div class="order-summary">
+      <img [src]="order.imageUrl || 'assets/default-product.jpg'" alt="{{ order.productName }}" class="product-img" />
+
+      <div class="order-info">
+        <h3>{{ order.productName }}</h3>
+        <p>Color: {{ order.color || 'N/A' }} | Size: {{ order.size || '—' }}</p>
+        <p class="price">
+          ₹{{ order.total }}
+          <span *ngIf="order.originalPrice && order.total < order.originalPrice" class="saved">
+            You saved ₹{{ order.originalPrice - order.total }}
+          </span>
+        </p>
+
+        <div class="status-line" [ngClass]="{
+          'delivered': order.status === 'Delivered',
+          'cancelled': order.status === 'Cancelled',
+          'refund': order.status === 'Refund Completed'
+        }">
+          <span *ngIf="order.status === 'Delivered'">✅ Delivered on {{ order.date | date:'MMM d' }}</span>
+          <span *ngIf="order.status === 'Refund Completed'">💰 Refund completed</span>
+          <span *ngIf="order.status === 'Cancelled'">❌ Order Cancelled</span>
+        </div>
+
+        <div *ngIf="order.refundInfo" class="refund-box">
+          <p><b>Refund ID:</b> {{ order.refundInfo.id }}</p>
+          <p>Refund of ₹{{ order.refundInfo.amount }} added to your account on {{ order.refundInfo.date | date:'MMM d, h:mm a' }}</p>
+          <p class="refund-note">If refund not visible, please contact your bank with reference: {{ order.refundInfo.refNumber }}</p>
+        </div>
+
+        <div *ngIf="order.groupDeal" class="group-savings">
+          🎉 You saved ₹{{ order.groupDeal.savings }} via group deal!
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-review">⭐ Rate & Review</button>
+          <button *ngIf="order.status === 'Delivered'" class="btn btn-track">📍 Track Order</button>
+          <button *ngIf="order.status === 'Pending'" (click)="cancelOrder(order)" class="btn btn-cancel">❌ Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
