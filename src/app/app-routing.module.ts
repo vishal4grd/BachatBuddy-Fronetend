@@ -24,30 +24,30 @@ import { BeautyComponent } from './beauty/beauty.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 
-  { path: 'products', component: ProductsComponent, canActivate: [AuthGuard] },
+  { path: 'products', component: ProductsComponent },
   { path: 'buy', component: BuyComponent, canActivate: [AuthGuard] },
-  { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
+  { path: 'search', component: SearchComponent },
   { path: 'feedback', component: FeedbackComponent, canActivate: [AuthGuard] },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'weddingBazar', component: WeddingBazarComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent },
+  { path: 'weddingBazar', component: WeddingBazarComponent },
   { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
-  { path: 'address', component: AddressComponent, canActivate: [AuthGuard]  },
-  { path: 'coupons', component: CouponsComponent,canActivate: [AuthGuard]  },
-   { path: 'grocries', component: GrocriesComponent,canActivate: [AuthGuard]  },
-    { path: 'electronics', component: ElectronicsComponent,canActivate: [AuthGuard]  },
-     { path: 'fashion', component: FashionsComponent,canActivate: [AuthGuard]  },
-     { path: 'beauty', component: BeautyComponent,canActivate: [AuthGuard]  },
-      { path: 'product-detail', component: ProductDetailComponent,canActivate: [AuthGuard]  },
-      { path: 'deals', component: DealsComponent },
-      { path: 'product-detail/:id', component: ProductDetailComponent }, // view details
-      { path: 'buy/:id', component: BuyComponent,canActivate: [AuthGuard]  },  
-      { path: 'cart', component: CartComponent },
-  
+  { path: 'address', component: AddressComponent, canActivate: [AuthGuard] },
+  { path: 'coupons', component: CouponsComponent },
+  { path: 'grocries', component: GrocriesComponent },
+  { path: 'electronics', component: ElectronicsComponent },
+  { path: 'fashion', component: FashionsComponent },
+  { path: 'beauty', component: BeautyComponent },
+  { path: 'product-detail', component: ProductDetailComponent },
+  { path: 'deals', component: DealsComponent },
+  { path: 'product-detail/:id', component: ProductDetailComponent }, // view details
+  { path: 'buy/:id', component: BuyComponent, canActivate: [AuthGuard] },
+  { path: 'cart', component: CartComponent },
+
 
   { path: '**', component: NotfoundComponent }
 ];
@@ -56,4 +56,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

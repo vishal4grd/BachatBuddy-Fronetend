@@ -12,9 +12,9 @@ export class AppComponent implements OnInit {
   isLoggedIn = false;
   isProfileDropdownOpen = false;
   userName: string | null = null;
-cartCount: any;
+  cartCount: any;
 
-  constructor(public r: Router, private userService: UserService) {}
+  constructor(public r: Router, private userService: UserService) { }
 
   ngOnInit(): void {
     console.log('AppComponent initialized');
@@ -57,7 +57,7 @@ cartCount: any;
     this.isLoggedIn = false;
     this.isProfileDropdownOpen = false;
     this.userName = null;
-    this.r.navigate(['/login']);
+    this.r.navigate(['/home']);
   }
 
   show(): void {
