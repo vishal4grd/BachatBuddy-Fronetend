@@ -8,11 +8,11 @@
       <a routerLink="/products" class="explore-btn">🛒 Start Shopping</a>
     </div>
     <div class="hero-image-emoji" aria-label="Shopping together" role="img">
-  <span class="emoji">🛍️🛒👫</span>
-</div>
+      <span class="emoji">🛍️🛒👫</span>
+    </div>
 
   </section>
- <!-- How It Works Section (moved down) -->
+  <!-- How It Works Section (moved down) -->
   <section class="how-it-works">
     <h2>📦 How It Works</h2>
     <div class="steps">
@@ -42,7 +42,7 @@
 
       <!-- Example using Angular *ngFor like product.html -->
       <div class="deal-card" *ngFor="let item of popularProducts">
-      <img [src]="item.pimage" [alt]="item.pname" style="width: 150px; height: auto; object-fit: contain; border-radius: 8px;" />
+        <img [src]="item.pimage" [alt]="item.pname" />
         <h4>{{ item.pname }}</h4>
         <p><del>₹{{ item.price }}</del> <strong>₹{{ item.price * 0.5 | number:'1.0-0' }} (Group Price)</strong></p>
         <div class="progress-bar-container">
@@ -55,7 +55,7 @@
     </div>
   </section>
 
-   <!-- Ask Buddy CTA -->
+  <!-- Ask Buddy CTA -->
   <section class="ask-buddy-cta">
     <h3>💬 Need help choosing?</h3>
     <p><strong>Ask Buddy</strong> to find the best deals for your needs!</p>

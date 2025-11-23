@@ -18,13 +18,16 @@
   font-size: 32px;
   margin-bottom: 10px;
 }
+
 .hero-text span {
   color: #d97706;
 }
+
 .hero-text p {
   font-size: 18px;
   color: #555;
 }
+
 .hero-text .explore-btn {
   margin-top: 20px;
   background-color: #f59e0b;
@@ -43,17 +46,21 @@
   text-align: center;
   margin-bottom: 40px;
 }
+
 .how-it-works .steps {
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
 }
+
 .step {
   max-width: 250px;
 }
+
 .step img {
   width: 80px;
 }
+
 .step h4 {
   margin-top: 10px;
   color: #333;
@@ -63,35 +70,72 @@
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  justify-content: center;
+  /* Center cards if they don't fill the row */
 }
+
 .deal-card {
   background: #fff;
   padding: 20px;
   border-radius: 16px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  /* Softer shadow */
   width: 250px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e5e7eb;
+  /* Light border */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+.deal-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
 .deal-card img {
   width: 100%;
-  height: 160px;
-  object-fit: cover;
+  height: 180px;
+  /* Fixed height for consistency */
+  object-fit: contain;
+  /* Ensure image is fully visible */
   border-radius: 8px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  /* White background for transparent images */
 }
+
 .deal-card h4 {
-  margin: 10px 0 5px;
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+  color: #1f2937;
+  font-weight: 600;
+  line-height: 1.4;
+  height: 2.8em;
+  /* 1.4 * 2 lines */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
+
 .deal-card p {
   margin: 5px 0;
+  color: #4b5563;
+  font-size: 0.95rem;
 }
+
 .progress-bar-container {
   width: 100%;
   height: 8px;
-  background-color: #eee;
+  background-color: #e5e7eb;
   border-radius: 4px;
-  margin: 8px 0;
+  margin: 12px 0;
+  overflow: hidden;
 }
+
 .progress-bar {
-  height: 8px;
+  height: 100%;
   background-color: #f59e0b;
   border-radius: 4px;
 }
@@ -99,10 +143,20 @@
 .btn-join {
   background-color: #f59e0b;
   color: white;
-  padding: 6px 14px;
+  padding: 8px 16px;
   border: none;
   border-radius: 20px;
   cursor: pointer;
+  font-weight: 600;
+  margin-top: auto;
+  /* Push button to the bottom */
+  align-self: flex-start;
+  /* Align button to the left (or center if preferred) */
+  transition: background-color 0.2s;
+}
+
+.btn-join:hover {
+  background-color: #d97706;
 }
 
 .ask-buddy-cta {
@@ -112,6 +166,7 @@
   margin-top: 50px;
   border-radius: 12px;
 }
+
 .ask-buddy-cta .btn-outline {
   margin-top: 10px;
   padding: 10px 20px;
@@ -121,10 +176,12 @@
   text-decoration: none;
   font-weight: bold;
 }
+
 .ask-buddy-cta .btn-outline:hover {
   background-color: #f59e0b;
   color: white;
 }
+
 .how-it-works .step {
   text-align: center;
   padding: 20px;
@@ -136,14 +193,19 @@
   font-size: 48px;
   margin-bottom: 10px;
 }
+
 .hero-image-emoji {
-  font-size: 5rem;          /* big size */
-  text-align: center;       /* center horizontally */
-  user-select: none;        /* no text selection */
+  font-size: 5rem;
+  /* big size */
+  text-align: center;
+  /* center horizontally */
+  user-select: none;
+  /* no text selection */
   margin-top: 20px;
 }
 
 .hero-image-emoji .emoji {
   display: inline-block;
-  filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.2)); /* subtle shadow */
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
+  /* subtle shadow */
 }
