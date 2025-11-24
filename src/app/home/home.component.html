@@ -12,7 +12,8 @@
     </div>
 
   </section>
-  <!-- How It Works Section (moved down) -->
+
+  <!-- How It Works Section -->
   <section class="how-it-works">
     <h2>📦 How It Works</h2>
     <div class="steps">
@@ -35,23 +36,37 @@
   </section>
 
 
-  <!-- Popular Group Deals (moved up) -->
+  <!-- Popular Group Deals -->
   <section class="group-deals">
     <h2>🔥 Popular Group Deals</h2>
-    <div class="deal-cards">
 
-      <!-- Example using Angular *ngFor like product.html -->
+    <!-- Loading State -->
+    <div *ngIf="loading" class="loading-message">
+      <p>Loading amazing deals... 🛍️</p>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="error && !loading" class="error-message">
+      <p>{{ error }}</p>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="deal-cards" *ngIf="!loading && !error">
       <div class="deal-card" *ngFor="let item of popularProducts">
-        <img [src]="item.pimage" [alt]="item.pname" />
-        <h4>{{ item.pname }}</h4>
-        <p><del>₹{{ item.price }}</del> <strong>₹{{ item.price * 0.5 | number:'1.0-0' }} (Group Price)</strong></p>
+        <img [src]="item.productImage" [alt]="item.productName" />
+        <h4>{{ item.productName }}</h4>
+        <p>
+          <del>₹{{ item.originalPrice }}</del>
+          <strong>₹{{ item.groupPrice }} (Group Price)</strong>
+        </p>
         <div class="progress-bar-container">
-          <div class="progress-bar" style="width: 70%"></div>
+          <div class="progress-bar" [style.width.%]="item.progressPercentage"></div>
         </div>
-        <p>7 joined / 10 needed</p>
-        <button class="btn-join">Join Group</button>
+        <p>{{ item.currentJoined }} joined / {{ item.totalNeeded }} needed</p>
+        <button class="btn-join" (click)="joinGroup(item.id)" [disabled]="item.hasUserJoined || item.isGroupComplete">
+          {{ item.hasUserJoined ? 'Already Joined' : item.isGroupComplete ? 'Group Full' : 'Join Group' }}
+        </button>
       </div>
-
     </div>
   </section>
 
