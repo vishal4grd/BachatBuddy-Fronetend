@@ -1,79 +1,59 @@
 import { Component, OnInit } from '@angular/core';
-import { OnlineserviceService, IProd } from '../onlineservice.service';
+import { GroupBuyingService } from '../services/group-buying.service';
+import { GroupBuyingProduct } from '../models/group-buying.model';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
-  providers: [OnlineserviceService]
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  prod: any[] = [];
-  popularProducts = [
-  {
-    pimage: 'assets/earbuds.jpg',
-    pname: 'Bluetooth Earbuds',
-    price: 1999,
-  },
-  {
-    pimage: 'assets/ricebag.jpg',
-    pname: '5kg Premium Rice',
-    price: 450,
-  },
-   {
-    pimage: 'assets/mixer.jpg',
-    pname: '500W Mixer Grinder',
-    price: 2599,
-  },
-  {
-    pimage: 'assets/oil.jpg',
-    pname: '1L Sunflower Oil (Pack of 2)',
-    price: 320,
-  },
-  {
-    pimage: 'assets/sneaker.jpg',
-    pname: 'Casual Sneakers (Men)',
-    price: 999,
-  },
-  {
-    pimage: 'assets/tshirt.jpg',
-    pname: 'Cotton T-shirt (Combo of 3)',
-    price: 799,
-  },
-  {
-    pimage: 'assets/maggie.jpg',
-    pname: 'Maggi Noodles (12 Pack)',
-    price: 180,
-  },
-  {
-    pimage: 'assets/detergent.jpg',
-    pname: '1kg Detergent Powder',
-    price: 120,
-  },
-  {
-    pimage: 'assets/toothpaste.jpg',
-    pname: 'Toothpaste Value Pack (3x150g)',
-    price: 210,
-  },
- 
-  // add more products as needed
-];
+  popularProducts: GroupBuyingProduct[] = [];
+  loading: boolean = true;
+  error: string = '';
 
-  constructor(private service: OnlineserviceService) {}
+  constructor(private groupBuyingService: GroupBuyingService) { }
 
   ngOnInit(): void {
-    // this.service.showproduct().subscribe((result: IProd[]) => {
-    //   this.prod = result.map((p: IProd) => ({
-    //     ...p,
-    //     joined: this.randomJoin(p.qty), // use method below
-    //     required: p.qty,
-    //     groupPrice: Math.floor(p.price * 0.8),
-    //     originalPrice: p.price
-    //   }));
-    // });
+    this.loadGroupBuyingProducts();
   }
 
-  randomJoin(max: number): number {
-    return Math.floor(Math.random() * max);
+  loadGroupBuyingProducts(): void {
+    this.loading = true;
+    this.groupBuyingService.getAllActiveGroupBuys().subscribe({
+      next: (products) => {
+        this.popularProducts = products;
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Error loading group buying products:', err);
+        this.error = 'Failed to load products. Please try again later.';
+        this.loading = false;
+      }
+    });
+  }
+
+  joinGroup(productId: number): void {
+    const userId = sessionStorage.getItem('uid');
+
+    if (!userId) {
+      alert('Please login to join a group!');
+      return;
+    }
+
+    this.groupBuyingService.joinGroupByIds(Number(userId), productId).subscribe({
+      next: (response) => {
+        if (response.success) {
+          alert(response.message);
+          this.loadGroupBuyingProducts(); // Refresh the products
+        } else {
+          alert(response.message);
+        }
+      },
+      error: (err) => {
+        console.error('Error joining group:', err);
+        alert('Failed to join group. Please try again.');
+      }
+    });
   }
 }
