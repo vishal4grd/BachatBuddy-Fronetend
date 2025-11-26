@@ -44,7 +44,8 @@ const routes: Routes = [
   { path: 'beauty', component: BeautyComponent },
   { path: 'product-detail', component: ProductDetailComponent },
   { path: 'deals', component: DealsComponent },
-  { path: 'product-detail/:id', component: ProductDetailComponent }, // view details
+    // ✅ Protect product detail route
+  { path: 'product-detail/:id', component: ProductDetailComponent, canActivate: [AuthGuard] }, // view details
   { path: 'buy/:id', component: BuyComponent, canActivate: [AuthGuard] },
   { path: 'cart', component: CartComponent },
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { GroupBuyingService } from '../services/group-buying.service';
 import { GroupBuyingProduct } from '../models/group-buying.model';
 
@@ -12,7 +13,10 @@ export class HomeComponent implements OnInit {
   loading: boolean = true;
   error: string = '';
 
-  constructor(private groupBuyingService: GroupBuyingService) { }
+  constructor(
+    private groupBuyingService: GroupBuyingService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadGroupBuyingProducts();
@@ -37,17 +41,15 @@ export class HomeComponent implements OnInit {
     const userId = sessionStorage.getItem('uid');
 
     if (!userId) {
-      alert('Please login to join a group!');
+      this.router.navigate(['/login']);
       return;
     }
 
     this.groupBuyingService.joinGroupByIds(Number(userId), productId).subscribe({
       next: (response) => {
+        alert(response.message);
         if (response.success) {
-          alert(response.message);
           this.loadGroupBuyingProducts(); // Refresh the products
-        } else {
-          alert(response.message);
         }
       },
       error: (err) => {

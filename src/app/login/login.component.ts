@@ -24,13 +24,20 @@ export class LoginComponent {
 
     this.userService.loginUser(username, password).subscribe({
       next: (user: any) => {
+        // ✅ Clear old session and set new login state
         sessionStorage.clear();
         sessionStorage.setItem('uid', username);
 
-        this.userService.setLoginStatus(true); // ✅ Notify global state
+        this.userService.setLoginStatus(true); // notify global state
 
-        // Optional: reload page to ensure root component sees it
-        window.location.href = '/home'; // ✅ guarantees app reload
+        // ✅ Check if AuthGuard saved a redirect URL
+        const redirectUrl = sessionStorage.getItem('redirectUrl');
+        if (redirectUrl) {
+          sessionStorage.removeItem('redirectUrl'); // cleanup
+          this.router.navigateByUrl(redirectUrl);   // go back to intended page
+        } else {
+          this.router.navigate(['/home']); // fallback if no redirect
+        }
       },
       error: (err: any) => {
         if (err.status === 404) {
